@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vaatteen muokkaus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Muokkaa vaatetta</h1>
+	<div>
+		<form th:object="${vaate}" th:action="@{../save}" action="#" method="post">
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+		  	<label for="name">Nimi</label>
+			<input type="text" id="title" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="type">Tyyppi</label>
+			<input type="text" id="author" th:field="*{type}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="price">Hinta</label>
+			<input type="text" id="year" th:field="*{price}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="valmistaja">Valmistaja</label>
+			<input type="text" id="isbn" th:field="*{valmistaja}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<br>
+			<input type="submit" value="Save ✓"></input>
+		</form>
+	</div>
+</body>
+</html>
