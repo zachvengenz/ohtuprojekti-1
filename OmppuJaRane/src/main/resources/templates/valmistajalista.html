@@ -16,8 +16,8 @@
     	<tr th:each = "valmistaja : ${valmistaja}">
     		<td th:text="${valmistaja.id}"></td>
     		<td th:text="${valmistaja.name}"></td>
-    		<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${valmistaja.id})}">🔥</a></td>
-    		<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${valmistaja.id})}">✍</a></td>
+    		<td><a class="btn btn-danger" th:href="@{/deletevalmistaja/{id}(id=${valmistaja.id})}">🔥</a></td>
+    		<td><a class="btn btn-success" th:href="@{/editvalmistaja/{id}(id=${valmistaja.id})}">✍</a></td>
     	</tr>
      </table>
      <a class="btn btn-success" href="/addvalmistaja">Lisää valmistaja</a>

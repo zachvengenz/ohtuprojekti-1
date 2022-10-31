@@ -8,7 +8,7 @@
 <body>
 	<h1>Lisää valmistaja</h1>
 	<div>
-		<form th:object="${valmistaja}" th:action="@{save}" action="#" method="post">
+		<form th:object="${valmistaja}" th:action="@{savevalmistaja}" action="#" method="post">
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}" />
 			 
