@@ -35,8 +35,17 @@ public class OmppuJaRaneApplication {
 				logger.info("{}", valmistaja);
 			});
 			
-		
-		
+			Vaate va1 = new Vaate("JoustavaMeno", "Haalari", 59.00, vrepository.findByName("M&M").get(0));
+			Vaate va2 = new Vaate("70-luku", "Haalari", 32.00, vrepository.findByName("Leikki").get(0));
+			Vaate va3 = new Vaate("LämpöisäHaukku", "Talvihaalari", 92.00, vrepository.findByName("Leikki").get(0));
+			
+			repository.save(va1);
+			repository.save(va2);
+			repository.save(va3);
+			
+			repository.findAll().forEach((vaate) -> {
+				logger.info("{}", vaate);
+			});
 		};
 
 }
