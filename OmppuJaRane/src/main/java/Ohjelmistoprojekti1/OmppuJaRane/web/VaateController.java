@@ -17,9 +17,15 @@ public class VaateController {
 	@Autowired
 	private VaatteetRepository repository; 
 	
-    @RequestMapping(value="/vaatelista")
+	// etusivulle
+	@GetMapping(value="/")
+    public String etusivu() {	
+        return "etusivu";
+    }
+	
+    @GetMapping(value="/vaatelista")
     public String vaateList(Model model) {	
-        model.addAttribute("vaate", repository.findAll());
+        model.addAttribute("vaatteet", repository.findAll());
         return "vaatelista";
     }
     
