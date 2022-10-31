@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import Ohjelmistoprojekti1.OmppuJaRane.domain.Vaate;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.VaatteetRepository;
 
 
@@ -20,5 +21,12 @@ public class VaateController {
         model.addAttribute("vaate", repository.findAll());
         return "vaatelista";
     }
+    
+    @RequestMapping(value = "/add")
+    public String addVaate(Model model){
+    	model.addAttribute("vaate", new Vaate());
+        return "addvaate";
+    }     
+    
     
 }
