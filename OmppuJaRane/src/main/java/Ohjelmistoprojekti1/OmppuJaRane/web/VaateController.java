@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Vaate;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.VaatteetRepository;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.ValmistajaRepository;
 
 
 @Controller
 public class VaateController {
 	@Autowired
 	private VaatteetRepository repository; 
+	
+	@Autowired
+	private ValmistajaRepository vrepository;
 	
 	// etusivulle
 	@GetMapping(value="/")
@@ -32,6 +36,7 @@ public class VaateController {
     @RequestMapping(value = "/add")
     public String addVaate(Model model){
     	model.addAttribute("vaate", new Vaate());
+    	model.addAttribute("valmistajat", vrepository.findAll());
         return "addvaate";
     }     
     
