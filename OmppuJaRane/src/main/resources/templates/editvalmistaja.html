@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Valmistajan muokkaus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Muokkaa valmistajaa</h1>
+	<div>
+		<form th:object="${valmistaja}" th:action="@{../savevalmistaja}" action="#" method="post">
+			<label for="id"></label>
+			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+		  	<label for="name">Nimi</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<br>
+			<input type="submit" value="Save ✓"></input>
+		</form>
+	</div>
+</body>
+</html>
