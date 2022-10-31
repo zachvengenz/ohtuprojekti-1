@@ -32,7 +32,7 @@ public class ValmistajaController {
     @RequestMapping(value = "/savecat", method = RequestMethod.POST)
     public String save(Valmistaja valmistaja){
         valmistajarepository.save(valmistaja);
-        return "redirect:valmistjalista";
+        return "redirect:valmistajalista";
     }    
 	
 }
