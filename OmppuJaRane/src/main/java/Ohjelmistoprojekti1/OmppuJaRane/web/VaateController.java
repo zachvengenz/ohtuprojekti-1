@@ -33,6 +33,13 @@ public class VaateController {
         repository.save(vaate);
         return "redirect:vaatelista";
     }    
+
+    @RequestMapping(value = "/edit/{id}")
+	public String editVaate(@PathVariable("id") Long vaateId, Model model) {
+		model.addAttribute("vaate", repository.findById(vaateId));
+		return "editvaate";
+
     
     
-}
+} 
+    }
