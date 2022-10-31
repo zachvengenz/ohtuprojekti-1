@@ -20,7 +20,7 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="catlist">Valmistaja</label>
 				<select id="catlist" th:field="*{valmistaja}">
-					<option th:each="valmistaja: ${valmistaja}" th:value="${valmistaja.id}" th:text="${valmistaja.name}"></option>
+					<option th:each="valmistaja: ${valmistajat}" th:value="${valmistaja.id}" th:text="${valmistaja.name}"></option>
 				</select>
 			 
 			<div style="clear: both; display: block; height: 10px;"></div>
