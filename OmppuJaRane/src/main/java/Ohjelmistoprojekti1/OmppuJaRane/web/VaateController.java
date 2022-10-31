@@ -7,14 +7,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import Ohjelmistoprojekti1.OmppuJaRane.domain.VaatteetRepository;
+
 
 @Controller
 public class VaateController {
 	@Autowired
 	private VaatteetRepository repository; 
 	
-    @RequestMapping(value="/vaatelist")
+    @RequestMapping(value="/vaatelista")
     public String studentList(Model model) {	
         model.addAttribute("vaate", repository.findAll());
-        return "vaatelist";
+        return "vaatelista";
     }
+    
+}
