@@ -28,5 +28,11 @@ public class VaateController {
         return "addvaate";
     }     
     
+    @RequestMapping(value = "/edit/{id}")
+	public String editVaate(@PathVariable("id") Long vaateId, Model model) {
+		model.addAttribute("vaate", repository.findById(vaateId));
+		return "editvaate";
     
-}
+    
+} 
+    }
