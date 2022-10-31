@@ -17,7 +17,7 @@ public class ValmistajaController {
 	@Autowired
 	private ValmistajaRepository valmistajarepository; 
 			
-	@RequestMapping(value="/valmistjalista", method = RequestMethod.GET)
+	@RequestMapping(value="/valmistajalista", method = RequestMethod.GET)
 	public String valmistajaList(Model model) {
 		model.addAttribute("valmistaja", valmistajarepository.findAll());
 		return "valmistajalista";
