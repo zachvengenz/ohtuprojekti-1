@@ -28,5 +28,11 @@ public class VaateController {
         return "addvaate";
     }     
     
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Vaate vaate){
+        repository.save(vaate);
+        return "redirect:vaatelista";
+    }    
+    
     
 }
