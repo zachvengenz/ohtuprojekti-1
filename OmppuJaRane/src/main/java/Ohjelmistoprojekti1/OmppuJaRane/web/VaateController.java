@@ -18,7 +18,7 @@ public class VaateController {
 	private VaatteetRepository repository; 
 	
     @RequestMapping(value="/vaatelista")
-    public String studentList(Model model) {	
+    public String vaateList(Model model) {	
         model.addAttribute("vaate", repository.findAll());
         return "vaatelista";
     }
