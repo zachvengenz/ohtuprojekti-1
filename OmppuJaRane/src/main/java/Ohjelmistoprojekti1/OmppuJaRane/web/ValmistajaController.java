@@ -4,25 +4,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import Ohjelmistoprojekti1.OmppuJaRane.domain.VaatteetRepository;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.Valmistaja;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.ValmistajaRepository;
 
+
+@Controller
 public class ValmistajaController {
 
 
-
-
-	@Controller
-	public class VaatteetController {
-			@Autowired
-			private VaatteetRepository repository; 
+	@Autowired
+	private ValmistajaRepository valmistajarepository; 
 			
-		    @RequestMapping(value="/studentlist")
-		    public String studentList(Model model) {	
-		        model.addAttribute("students", repository.findAll());
-		        return "studentlist";
-		    }
-
+	@RequestMapping(value="/valmistjalista", method = RequestMethod.GET)
+	public String valmistajaList(Model model) {
+		model.addAttribute("valmistaja", valmistajarepository.findAll());
+		return "valmistajalista";
 	}
-
+	
+	@RequestMapping(value = "/addvalmistaja")
+    public String addValmistaja(Model model){
+    	model.addAttribute("valmistaja", new Valmistaja());
+        return "addvalmistaja";
+    }     
+    
+    @RequestMapping(value = "/savecat", method = RequestMethod.POST)
+    public String save(Valmistaja valmistaja){
+        valmistajarepository.save(valmistaja);
+        return "redirect:valmistjalsita";
+    }    
+	
 }
+
+
