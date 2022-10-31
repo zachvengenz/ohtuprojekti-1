@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import Ohjelmistoprojekti1.OmppuJaRane.domain.Vaate;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.VaatteetRepository;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Valmistaja;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.ValmistajaRepository;
@@ -34,9 +35,9 @@ public class OmppuJaRaneApplication {
 				logger.info("{}", valmistaja);
 			});
 			
-			
 		
-		}
-		}
+		
+		};
 
+}
 }
