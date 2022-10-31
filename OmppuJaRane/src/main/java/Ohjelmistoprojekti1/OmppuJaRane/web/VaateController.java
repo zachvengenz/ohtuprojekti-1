@@ -49,6 +49,7 @@ public class VaateController {
     @RequestMapping(value = "/edit/{id}")
 	public String editVaate(@PathVariable("id") Long vaateId, Model model) {
 		model.addAttribute("vaate", repository.findById(vaateId));
+		model.addAttribute("valmistajat", vrepository.findAll());
 		return "editvaate";   
     
 } 
