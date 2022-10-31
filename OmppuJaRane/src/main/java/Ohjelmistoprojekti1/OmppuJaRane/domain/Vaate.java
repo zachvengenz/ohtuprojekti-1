@@ -13,7 +13,7 @@ public class Vaate {
 	
 	//jpa id
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	//atribuutit
@@ -22,7 +22,7 @@ public class Vaate {
 	private Double price;
 	
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "valmistajaId")
 	private Valmistaja valmistaja;
 	
 	//parametritön konstruktori
