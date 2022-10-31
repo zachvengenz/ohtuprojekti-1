@@ -54,6 +54,14 @@ public class Valmistaja {
 		this.name = name;
 	}
 
+	public List<Vaate> getVaatteet() {
+		return vaatteet;
+	}
+
+	public void setVaatteet(List<Vaate> vaatteet) {
+		this.vaatteet = vaatteet;
+	}
+
 	@Override
 	public String toString() {
 		return "Valmistaja [id=" + id + ", name=" + name + "]";
