@@ -25,13 +25,13 @@ public class Valmistaja {
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "valmistaja")
-	private List<Vaatteet> vaatteet;
+	private List<Vaate> vaatteet;
 	
 	//parametritön konstruktori
 	public Valmistaja() {}
 
 	//konstruktori
-	public Valmistaja(String name, List<Vaatteet> vaatteet) {
+	public Valmistaja(String name, List<Vaate> vaatteet) {
 		super();
 		this.name = name;
 		this.vaatteet = vaatteet;
@@ -55,11 +55,11 @@ public class Valmistaja {
 		this.name = name;
 	}
 
-	public List<Vaatteet> getVaatteet() {
+	public List<Vaate> getVaatteet() {
 		return vaatteet;
 	}
 
-	public void setVaatteet(List<Vaatteet> vaatteet) {
+	public void setVaatteet(List<Vaate> vaatteet) {
 		this.vaatteet = vaatteet;
 	}
 

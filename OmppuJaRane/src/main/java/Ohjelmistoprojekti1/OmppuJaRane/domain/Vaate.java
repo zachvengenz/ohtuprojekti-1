@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 
-public class Vaatteet {
+public class Vaate {
 	
 	//jpa id
 	@Id
@@ -26,13 +26,13 @@ public class Vaatteet {
 	private Valmistaja valmistaja;
 	
 	//parametritön konstruktori
-	public Vaatteet() {}
+	public Vaate() {}
 
 	
 	
 	//konstruktori
 	
-	public Vaatteet(String name, String type, Double price, Valmistaja valmistaja) {
+	public Vaate(String name, String type, Double price, Valmistaja valmistaja) {
 		super();
 		this.name = name;
 		this.type = type;
