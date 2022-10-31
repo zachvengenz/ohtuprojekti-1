@@ -3,6 +3,7 @@
 <head>
     <title>Valmistajan muokkaus</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Muokkaa valmistajaa</h1>
@@ -13,7 +14,7 @@
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}" />
 			<br>
-			<input type="submit" value="Save ✓"></input>
+			<input type="submit" class="btn btn-success"value="Save ✓"></input>
 		</form>
 	</div>
 </body>
