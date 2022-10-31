@@ -10,16 +10,16 @@
 	<div>
 		<form th:object="${vaate}" th:action="@{save}" action="#" method="post">
 		  	<label for="name">Nimi</label>
-			<input type="text" id="name" th:field="*{name}" class="form-control"/>
+			<input type="text" id="name" th:field="*{name}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="type">Type</label>
-			<input type="text" id="type" th:field="*{type}" class="form-control"/>
+			<input type="text" id="type" th:field="*{type}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="price">hinta</label>
-			<input type="text" th:field="*{price}" class="form-control"/>
+			<input type="text" th:field="*{price}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="catlist">Valmistaja</label>
-				<select id="catlist" th:field="*{valmistaja}" class="form-control">
+				<select id="catlist" th:field="*{valmistaja}">
 					<option th:each="valmistaja: ${valmistaja}" th:value="${valmistaja.id}" th:text="${valmistaja.name}"></option>
 				</select>
 			 
