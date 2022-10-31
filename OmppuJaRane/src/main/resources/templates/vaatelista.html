@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<table>
+	<table class="table table-striped">
 		<tr>
 		    <th>ID</th>
 		    <th>Nimi</th>
@@ -22,10 +22,10 @@
     		<td th:text="${vaate.type}"></td>
     		<td th:text="${#numbers.formatDecimal(vaate.price,1,2)}"></td>
     		<td th:text="${vaate.valmistaja}"></td>
-    		<td><a th:href="@{/delete/{id}(id=${vaate.id})}">🔥</a></td>
-    		<td><a th:href="@{/edit/{id}(id=${vaate.id})}">✍</a></td>
+    		<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${vaate.id})}">🔥</a></td>
+    		<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${vaate.id})}">✍</a></td>
     	</tr>
      </table>
-     <a href="/add">Lisää vaate</a>
+     <a class="btn btn-success" href="/add">Lisää vaate</a>
 </body>
 </html>
