@@ -28,10 +28,17 @@ public class VaateController {
         return "addvaate";
     }     
     
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Vaate vaate){
+        repository.save(vaate);
+        return "redirect:vaatelista";
+    }    
+
     @RequestMapping(value = "/edit/{id}")
 	public String editVaate(@PathVariable("id") Long vaateId, Model model) {
 		model.addAttribute("vaate", repository.findById(vaateId));
 		return "editvaate";
+
     
     
 } 
