@@ -1,8 +1,11 @@
 package Ohjelmistoprojekti1.OmppuJaRane.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +44,11 @@ public class ApparelController {
     }     
     
     @RequestMapping(value = "/save_apparel", method = RequestMethod.POST)
-    public String save(Apparel apparel){
+    public String save(@Valid Apparel apparel, BindingResult result, Model model){
+    	if (result.hasErrors()) {
+    		model.addAttribute("makers", mrepository.findAll());
+    		return "addapparel";
+    	}
         arepository.save(apparel);
         return "redirect:/apparel_list";
     }    

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 
@@ -17,12 +18,16 @@ public class Apparel {
 	private Long apparelId;
 	
 	//atribuutit
+	@NotNull
 	private String name;
+	@NotNull
 	private String type;
+	@NotNull
 	private Double price;
 	
 	@ManyToOne
 	@JoinColumn(name = "valmistajaId")
+	@NotNull
 	private Maker maker;
 	
 	//parametritön konstruktori

@@ -11,13 +11,17 @@
 		<form th:object="${apparel}" th:action="@{save_apparel}" action="#" method="post">
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}"/>
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="type">Type</label>
 			<input type="text" id="type" th:field="*{type}"/>
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="price">Hinta</label>
 			<input type="text" th:field="*{price}"/>
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('maker')}" th:errors="*{maker}"></div>
 			<label for="catlist">Valmistaja</label>
 				<select id="catlist" th:field="*{maker}">
 					<option th:each="maker: ${makers}" th:value="${maker.id}" th:text="${maker.name}"></option>
