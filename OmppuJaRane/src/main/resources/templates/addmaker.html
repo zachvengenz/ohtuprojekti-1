@@ -11,7 +11,7 @@
 		<form th:object="${maker}" th:action="@{save_maker}" action="#" method="post">
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}" />
-			 
+			 <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<input class="btn btn-success" type="submit" value="Tallenna"></input>
