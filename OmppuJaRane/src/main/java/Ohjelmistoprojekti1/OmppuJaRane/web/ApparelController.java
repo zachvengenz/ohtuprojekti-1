@@ -44,8 +44,9 @@ public class ApparelController {
     }
     
     @GetMapping(value="/apparelmaker/{id}")
-    public String apparelMaker(@PathVariable("id") Long makerId, Model model) {	
-        model.addAttribute("apparels", arepository.findById(makerId));
+    public String apparelMaker(@PathVariable("id") Long id, Model model) {	
+    	model.addAttribute("maker", mrepository.findByMakerId(id));
+       	model.addAttribute("apparel", arepository.findAll());
         return "apparelmaker";
     }
     

@@ -13,19 +13,19 @@
 		    <th>Nimi</th>
 		    <th>Tyyppi</th>
 		    <th>Hinta</th>
-		    <th>Valmistaja</th>
-		    <th>Poista</th>
-		    <th>Muokkaa</th>
+
 		    
 		</tr>
-    	<tr th:each = "apparel : ${apparels}">
-    		<td th:text="${apparel.id}"></td>
-    		<td th:text="${apparel.name}"></td>
-    		<td th:text="${apparel.type}"></td>
-    		<td th:text="${#numbers.formatDecimal(apparel.price,1,2)}"></td>
-    		<td><a class="btn btn-danger" th:href="@{/delete_apparel/{id}(id=${apparel.id})}">🔥</a></td>
-    		<td><a class="btn btn-success" th:href="@{/edit_apparel/{id}(id=${apparel.id})}">✍</a></td>
-    	</tr>
+    	<th:block th:each = "maker : ${maker}">		
+    	 	<tr th:each="apparel : ${maker.apparel}">
+    	 		<td th:text="${apparel.id}">id </td>
+				<td th:text="${apparel.name}">names </td>
+				<td th:text="${apparel.type}">type </td>
+				<td th:text="${apparel.price}">price </td>		
+			</tr>
+           
+
+    	</th:block>
      </table>
      <a class="btn btn-success" href="/add_apparel">Lisää vaate</a>
           <a class="btn btn-success" href="/maker_list">Valmistajalista</a>

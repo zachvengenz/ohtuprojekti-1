@@ -66,7 +66,7 @@ public class Maker {
 
 	@Override
 	public String toString() {
-		return "Valmistaja [id=" + makerId + ", name=" + name + "]";
+		return "Apparel [id=" + makerId + ", name=" + name + "]";
 	}
 
 	

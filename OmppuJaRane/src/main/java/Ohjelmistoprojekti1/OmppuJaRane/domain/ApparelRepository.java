@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface ApparelRepository extends CrudRepository<Apparel, Long> {
 	
 	List<Apparel> findByName(String name);
+	List<Maker> findByMaker(Long id);
 	
 
 }
