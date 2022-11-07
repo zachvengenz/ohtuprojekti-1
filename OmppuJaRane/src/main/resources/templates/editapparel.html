@@ -8,7 +8,7 @@
 <body>
 	<h1>Muokkaa vaatetta</h1>
 	<div>
-		<form th:object="${apparel}" th:action="@{../save_apparel}" action="#" method="post">
+		<form th:object="${apparel}" th:action="@{/update_apparel/{id}(id=${apparel.id})}" action="#" method="post">
 			<label for="id"></label>
 			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
 		  	<label for="name">Nimi</label>

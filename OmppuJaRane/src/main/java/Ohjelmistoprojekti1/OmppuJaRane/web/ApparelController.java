@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Apparel;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.ApparelRepository;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.Maker;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.MakerRepository;
 
 
@@ -53,13 +55,25 @@ public class ApparelController {
         return "redirect:/apparel_list";
     }    
 
-    @RequestMapping(value = "/edit_apparel/{id}")
+    @GetMapping("/edit_apparel/{id}")
 	public String editApparel(@PathVariable("id") Long apparelId, Model model) {
-		model.addAttribute("apparel", arepository.findById(apparelId));
+    	Apparel apparel = arepository.findById(apparelId)
+    	.orElseThrow(() -> new IllegalArgumentException("Invalid id" + apparelId));
+
+    	model.addAttribute("apparel", apparel);
 		model.addAttribute("makers", mrepository.findAll());
+		
 		return "editapparel";   
     
 } 
+    
+    @PostMapping("/update_apparel/{id}")
+    public String updateApparel(@PathVariable("id") long apparelId, Model model, Apparel apparel) {
+    	apparel.setId(apparelId);
+    	arepository.save(apparel);
+    	return "redirect:/apparel_list";
+    }
+    
     @GetMapping("/delete_apparel/{id}")
     public String deleteApparel(@PathVariable("id") Long apparelId, Model model) {
     	arepository.deleteById(apparelId);
