@@ -8,7 +8,7 @@
 <body>
 	<h1>Muokkaa valmistajaa</h1>
 	<div>
-		<form th:object="${valmistaja}" th:action="@{../savevalmistaja}" action="#" method="post">
+		<form th:object="${maker}" th:action="@{../save_maker}" action="#" method="post">
 			<label for="id"></label>
 			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
 		  	<label for="name">Nimi</label>

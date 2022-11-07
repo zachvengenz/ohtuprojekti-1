@@ -8,7 +8,7 @@
 <body>
 	<h1>Muokkaa vaatetta</h1>
 	<div>
-		<form th:object="${vaate}" th:action="@{../save}" action="#" method="post">
+		<form th:object="${apparel}" th:action="@{../save_apparel}" action="#" method="post">
 			<label for="id"></label>
 			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
 		  	<label for="name">Nimi</label>
@@ -21,8 +21,8 @@
 			<input type="text" id="price" th:field="*{price}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="catlist">Valmistaja</label>
-				<select id="catlist" th:field="*{valmistaja}">
-					<option th:each="valmistaja: ${valmistajat}" th:value="${valmistaja.id}" th:text="${valmistaja.name}"></option>
+				<select id="catlist" th:field="*{maker}">
+					<option th:each="maker: ${makers}" th:value="${maker.id}" th:text="${maker.name}"></option>
 				</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<br>

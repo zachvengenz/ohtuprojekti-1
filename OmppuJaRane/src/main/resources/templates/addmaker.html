@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>OmppuJaRane add valmistaja</title>
+    <title>OmppuJaRane - Lisää valmistaja</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Lisää valmistaja</h1>
 	<div>
-		<form th:object="${valmistaja}" th:action="@{savevalmistaja}" action="#" method="post">
+		<form th:object="${maker}" th:action="@{save_maker}" action="#" method="post">
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}" />
 			 

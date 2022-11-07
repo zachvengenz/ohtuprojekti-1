@@ -6,9 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 
 
 
-public interface ValmistajaRepository extends CrudRepository<Valmistaja, Long>{
+public interface MakerRepository extends CrudRepository<Maker, Long>{
 
-	List<Valmistaja> findByName(String name);
+	List<Maker> findByName(String name);
 }
 
 

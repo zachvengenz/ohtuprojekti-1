@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface VaatteetRepository extends CrudRepository<Vaate, Long> {
+public interface ApparelRepository extends CrudRepository<Apparel, Long> {
 	
-	List<Vaate> findByName(String name);
+	List<Apparel> findByName(String name);
 
 }

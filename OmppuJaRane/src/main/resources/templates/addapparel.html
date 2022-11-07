@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>OmppuJaRane-addVaate</title>
+    <title>OmppuJaRane - Lisää vaate</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Lisää vaate</h1>
 	<div>
-		<form th:object="${vaate}" th:action="@{save}" action="#" method="post">
+		<form th:object="${apparel}" th:action="@{save_apparel}" action="#" method="post">
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
@@ -19,8 +19,8 @@
 			<input type="text" th:field="*{price}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="catlist">Valmistaja</label>
-				<select id="catlist" th:field="*{valmistaja}">
-					<option th:each="valmistaja: ${valmistajat}" th:value="${valmistaja.id}" th:text="${valmistaja.name}"></option>
+				<select id="catlist" th:field="*{maker}">
+					<option th:each="maker: ${makers}" th:value="${maker.id}" th:text="${maker.name}"></option>
 				</select>
 			 
 			<div style="clear: both; display: block; height: 10px;"></div>

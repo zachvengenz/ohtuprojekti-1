@@ -13,25 +13,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 
-public class Valmistaja {
+public class Maker {
 	
 	//jpa id
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long makerId;
 	
 	//atribuutit
 	private String name;
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "valmistaja")
-	private List<Vaate> vaatteet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "maker")
+	private List<Apparel> apparel;
 	
 	//parametritön konstruktori
-	public Valmistaja() {}
+	public Maker() {}
 
 	//konstruktori
-	public Valmistaja(String name) {
+	public Maker(String name) {
 		super();
 		this.name = name;
 	}
@@ -39,11 +39,11 @@ public class Valmistaja {
 	
 	//getterit setterit
 	public Long getId() {
-		return id;
+		return makerId;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.makerId = id;
 	}
 
 	public String getName() {
@@ -54,17 +54,17 @@ public class Valmistaja {
 		this.name = name;
 	}
 
-	public List<Vaate> getVaatteet() {
-		return vaatteet;
+	public List<Apparel> getApparel() {
+		return apparel;
 	}
 
-	public void setVaatteet(List<Vaate> vaatteet) {
-		this.vaatteet = vaatteet;
+	public void setApparel(List<Apparel> apparel) {
+		this.apparel = apparel;
 	}
 
 	@Override
 	public String toString() {
-		return "Valmistaja [id=" + id + ", name=" + name + "]";
+		return "Valmistaja [id=" + makerId + ", name=" + name + "]";
 	}
 
 	

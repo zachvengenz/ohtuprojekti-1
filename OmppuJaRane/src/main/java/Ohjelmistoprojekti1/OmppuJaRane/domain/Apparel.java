@@ -9,12 +9,12 @@ import javax.persistence.ManyToOne;
 
 @Entity
 
-public class Vaate {
+public class Apparel {
 	
 	//jpa id
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long apparelId;
 	
 	//atribuutit
 	private String name;
@@ -23,34 +23,34 @@ public class Vaate {
 	
 	@ManyToOne
 	@JoinColumn(name = "valmistajaId")
-	private Valmistaja valmistaja;
+	private Maker maker;
 	
 	//parametritön konstruktori
-	public Vaate() {}
+	public Apparel() {}
 
 	
 	
 	//konstruktori
 	
-	public Vaate(String name, String type, Double price, Valmistaja valmistaja) {
+	public Apparel(String name, String type, Double price, Maker maker) {
 		super();
 		this.name = name;
 		this.type = type;
 		this.price = price;
-		this.valmistaja = valmistaja;
+		this.maker = maker;
 	}
 	
 	//getterit setterit
 
 
 	public Long getId() {
-		return id;
+		return apparelId;
 	}
 
 
 
 	public void setId(Long id) {
-		this.id = id;
+		this.apparelId = id;
 	}
 
 
@@ -91,14 +91,14 @@ public class Vaate {
 
 
 
-	public Valmistaja getValmistaja() {
-		return valmistaja;
+	public Maker getMaker() {
+		return maker;
 	}
 
 
 
-	public void setValmistaja(Valmistaja valmistaja) {
-		this.valmistaja = valmistaja;
+	public void setMaker(Maker maker) {
+		this.maker = maker;
 	}
 
 
@@ -106,8 +106,8 @@ public class Vaate {
 	
 	@Override
 	public String toString() {
-		return "Vaatteet [id=" + id + ", name=" + name + ", type=" + type + ", price=" + price + ", valmistaja="
-				+ valmistaja + "]";
+		return "Vaatteet [id=" + apparelId + ", name=" + name + ", type=" + type + ", price=" + price + ", maker="
+				+ maker + "]";
 	}
 	
 	
