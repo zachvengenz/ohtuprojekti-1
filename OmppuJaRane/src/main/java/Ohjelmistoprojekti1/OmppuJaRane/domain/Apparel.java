@@ -27,7 +27,7 @@ public class Apparel {
 	private Double price;
 	
 	@ManyToOne
-	@JoinColumn(name = "valmistajaId")
+	@JoinColumn(name = "makerId")
 	private Maker maker;
 	
 	//parametritön konstruktori

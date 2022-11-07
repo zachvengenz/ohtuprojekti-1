@@ -38,6 +38,12 @@ public class ApparelController {
         return "apparellist";
     }
     
+    @GetMapping(value="/apparelmaker/{id}")
+    public String apparelMaker(@PathVariable("id") Long makerId, Model model) {	
+        model.addAttribute("apparels", arepository.findById(makerId));
+        return "apparelmaker";
+    }
+    
     @RequestMapping(value = "/add_apparel")
     public String addApparel(Model model){
     	model.addAttribute("apparel", new Apparel());
@@ -68,10 +74,14 @@ public class ApparelController {
 } 
     
     @PostMapping("/update_apparel/{id}")
-    public String updateApparel(@PathVariable("id") long apparelId, Model model, Apparel apparel) {
-    	apparel.setId(apparelId);
-    	arepository.save(apparel);
-    	return "redirect:/apparel_list";
+    public String updateApparel(@PathVariable("id") long apparelId, Model model, Apparel apparel, BindingResult result) {
+        if (result.hasErrors()) {
+            model.addAttribute("makers", mrepository.findAll());
+            return "editapparel";
+        }
+        apparel.setId(apparelId);
+        arepository.save(apparel);
+        return "redirect:/apparel_list";
     }
     
     @GetMapping("/delete_apparel/{id}")

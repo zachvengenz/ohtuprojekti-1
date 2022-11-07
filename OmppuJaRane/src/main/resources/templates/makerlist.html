@@ -13,14 +13,18 @@
 		    <th>Nimi</th>
 		    <th>Poista</th>
 		    <th>Muokkaa</th>
+		    <th>Merkin vaatteet</th>
 		    
 		    
 		</tr>
     	<tr th:each = "maker : ${makers}">
     		<td th:text="${maker.id}"></td>
     		<td th:text="${maker.name}"></td>
+    		
     		<td><a class="btn btn-danger" th:href="@{/delete_maker/{id}(id=${maker.id})}">🔥</a></td>
     		<td><a class="btn btn-success" th:href="@{/edit_maker/{id}(id=${maker.id})}">✍</a></td>
+    		<td><a class="btn btn-success" th:href="@{/apparelmaker/{maker} (maker=${maker})}">Merkin vaatteet</a></td>
+    		
     	</tr>
      </table>
      <a class="btn btn-success" href="/add_maker">Lisää valmistaja</a>
