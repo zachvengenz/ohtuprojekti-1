@@ -28,7 +28,6 @@ public class Apparel {
 	
 	@ManyToOne
 	@JoinColumn(name = "valmistajaId")
-	@NotEmpty
 	private Maker maker;
 	
 	//parametritön konstruktori
