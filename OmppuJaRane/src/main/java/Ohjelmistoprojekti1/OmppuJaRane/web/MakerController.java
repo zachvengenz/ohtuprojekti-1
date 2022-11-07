@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import Ohjelmistoprojekti1.OmppuJaRane.domain.Apparel;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.ApparelRepository;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Maker;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.MakerRepository;
 
@@ -28,12 +28,23 @@ public class MakerController {
 
 	@Autowired
 	private MakerRepository mrepository; 
+	
+	@Autowired
+	private ApparelRepository arepository;
 			
 	@RequestMapping(value="/maker_list", method = RequestMethod.GET)
 	public String valmistajaList(Model model) {
 		model.addAttribute("makers", mrepository.findAll());
 		return "makerlist";
 	}
+	
+	@RequestMapping(value = "/list/{id}")
+	public String editGame(@PathVariable("id") Long makeId, Model model) {
+		model.addAttribute("make", mrepository.findById(makeId));
+		model.addAttribute("apparel", arepository.findAll());
+		return "apparelmaker";   
+    
+} 
 	
 	@RequestMapping(value = "/add_maker")
     public String addValmistaja(Model model){
