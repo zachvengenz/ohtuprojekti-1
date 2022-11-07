@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,6 +22,7 @@ public class Maker {
 	private Long makerId;
 	
 	//atribuutit
+	@NotEmpty
 	private String name;
 	
 	@JsonIgnore

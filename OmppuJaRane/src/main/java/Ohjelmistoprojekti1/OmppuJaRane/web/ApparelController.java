@@ -1,5 +1,8 @@
 package Ohjelmistoprojekti1.OmppuJaRane.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Apparel;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.ApparelRepository;
@@ -88,5 +93,24 @@ public class ApparelController {
     public String deleteApparel(@PathVariable("id") Long apparelId, Model model) {
     	arepository.deleteById(apparelId);
         return "redirect:/apparel_list";
+    }
+    
+    
+    // RESTful service to get all 
+    @RequestMapping(value="/apparels", method = RequestMethod.GET)
+    public @ResponseBody List<Apparel> apparelListRest() {	
+        return (List<Apparel>) arepository.findAll();
+    }    
+
+	// RESTful service to get apparel by id
+    @RequestMapping(value="/apparels/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Apparel> findApparelRest(@PathVariable("id") Long apparelId) {	
+    	return arepository.findById(apparelId);
+    }      
+    
+    // RESTful service to save new apparel
+    @RequestMapping(value="/apparels", method = RequestMethod.POST)
+    public @ResponseBody Apparel saveApparelRest(@RequestBody Apparel apparel) {	
+    	return arepository.save(apparel);
     }
     }

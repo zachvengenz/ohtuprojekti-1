@@ -13,12 +13,15 @@
 			<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
 		  	<label for="name">Nimi</label>
 			<input type="text" id="name" th:field="*{name}" />
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="type">Tyyppi</label>
 			<input type="text" id="type" th:field="*{type}" />
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="price">Hinta</label>
 			<input type="text" id="price" th:field="*{price}" />
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="catlist">Valmistaja</label>
 				<select id="catlist" th:field="*{maker}">
