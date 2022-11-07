@@ -43,9 +43,9 @@ public class ApparelController {
         return "apparellist";
     }
     
-    @GetMapping(value="/apparelmaker/{id}")
+    @GetMapping(value="/apparelmaker/{id}") // valmistajan vaatteet
     public String apparelMaker(@PathVariable("id") Long makerId, Model model) {	
-        model.addAttribute("apparels", arepository.findById(makerId));
+        model.addAttribute("apparelmaker", arepository.findById(makerId));
         return "apparelmaker";
     }
     
