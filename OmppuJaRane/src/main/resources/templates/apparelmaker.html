@@ -14,7 +14,6 @@
 		    <th>Tyyppi</th>
 		    <th>Hinta</th>
 
-		    
 		</tr>
     	<th:block th:each = "maker : ${maker}">		
     	 	<tr th:each="apparel : ${maker.apparel}">
@@ -27,7 +26,6 @@
 
     	</th:block>
      </table>
-     <a class="btn btn-success" href="/add_apparel">Lisää vaate</a>
-          <a class="btn btn-success" href="/maker_list">Valmistajalista</a>
+     <a class="btn btn-success" href="/maker_list">Palaa takaisin</a>
 </body>
 </html>
