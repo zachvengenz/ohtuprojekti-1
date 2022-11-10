@@ -81,7 +81,7 @@ public class ApparelController {
 } 
     
     @PostMapping("/update_apparel/{id}")
-    public String updateApparel(@PathVariable("id") long apparelId, Model model, Apparel apparel, BindingResult result) {
+    public String updateApparel(@PathVariable("id") Long apparelId, Model model, Apparel apparel, BindingResult result) {
         if (result.hasErrors()) {
             model.addAttribute("makers", mrepository.findAll());
             return "editapparel";
