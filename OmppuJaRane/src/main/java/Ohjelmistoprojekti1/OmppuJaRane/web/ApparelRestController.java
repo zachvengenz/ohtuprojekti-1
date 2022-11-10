@@ -41,7 +41,7 @@ public class ApparelRestController {
     
     // RESTful service to delete apparel
     @DeleteMapping("/apparels/{id}")
-    void deleteApparel(@PathVariable Long id) {
+    public @ResponseBody void deleteApparel(@PathVariable("id") Long id) {
     	arepository.deleteById(id);
     }
 

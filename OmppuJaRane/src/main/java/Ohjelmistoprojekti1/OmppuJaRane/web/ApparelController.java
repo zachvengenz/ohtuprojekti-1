@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -85,8 +86,8 @@ public class ApparelController {
         return "redirect:/apparel_list";
     }
     
-    @GetMapping("/delete_apparel/{id}")
-    void deleteApparel(@PathVariable("id") Long apparelId, Model model) {
+    @DeleteMapping("/delete_apparel/{id}")
+    void deleteApparel(@PathVariable("id") Long apparelId) {
     	arepository.deleteById(apparelId);
     }
     }
