@@ -3,6 +3,7 @@ package Ohjelmistoprojekti1.OmppuJaRane;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,6 +64,8 @@ public class ApparelMakerRepositoryTests {
 		Long apparelId=(long) 01;
 		
 		repository.deleteById(apparelId);
+		
+		assertThat(repository.findById((long) 01).isEmpty());
 	}
 
 }
