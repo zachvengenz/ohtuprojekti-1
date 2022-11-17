@@ -9,10 +9,10 @@ function App() {
     fetch("http://localhost:8080/apparels")
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      setApparels(data)
     });
   },[])
-  
+  console.log(apparels)
 
   return (
     <div className="App">
