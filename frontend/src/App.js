@@ -12,14 +12,26 @@ function App() {
       setApparels(data)
     });
   },[])
-  console.log(apparels)
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Omppu Ja Rane</h1>
       </header>
-     
+      <table>
+        <tbody>
+          <tr><th>Name</th><th>Type</th><th>Price</th><th>Maker</th></tr>
+          { apparels.map((apparels) => 
+            <tr key={apparels.id}>
+              <td>{apparels.name}</td>
+              <td>{apparels.type}</td>
+              <td>{apparels.price}</td>
+              <td>{apparels.maker.name}</td>
+            </tr>
+
+          )}
+        </tbody>
+      </table>
 
 
     </div>
