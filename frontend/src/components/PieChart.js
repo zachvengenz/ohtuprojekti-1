@@ -10,11 +10,11 @@ class PieChart extends Component {
 
   getAll = async () => {
     this.setState({ loading: true });
-    const res = await axios.get("https://covid-api.mmediagroup.fr/v1/cases");
+    const res = await axios.get("http://localhost:8080/apparels");
 
-    this.setState({ data: res.data.Finland.All, loading: false });
+    this.setState({ data: res.data[0], loading: false });
 
-    console.log(this.state);
+    console.log();
   };
 
   async componentDidMount() {
@@ -31,9 +31,9 @@ class PieChart extends Component {
           loader={<div>Loading Chart</div>}
           data={[
             ["", ""],
-            ["Confirmed", this.state.data.confirmed],
-            ["Deaths", this.state.data.deaths],
-            ["population", this.state.data.population],
+            ["Price", this.state.data.price],
+            ["Price", this.state.data.price],
+            ["Price", this.state.data.price],
           ]}
           options={{
             title: "Data in Percentage",
