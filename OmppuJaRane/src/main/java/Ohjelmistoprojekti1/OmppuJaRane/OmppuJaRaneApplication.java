@@ -25,6 +25,8 @@ public class OmppuJaRaneApplication {
 		{return (args) -> {
 			final Logger logger = LoggerFactory.getLogger(CommandLineRunner.class);
 			
+			
+			
 			Maker v1 = new Maker("Leikki");
 			Maker v2 = new Maker("M&M");
 			

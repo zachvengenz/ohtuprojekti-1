@@ -1,5 +1,7 @@
 package Ohjelmistoprojekti1.OmppuJaRane.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Apparel;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.ApparelRepository;
@@ -90,4 +93,6 @@ public class ApparelController {
     void deleteApparel(@PathVariable("id") Long apparelId) {
     	arepository.deleteById(apparelId);
     }
+    
+   
     }
