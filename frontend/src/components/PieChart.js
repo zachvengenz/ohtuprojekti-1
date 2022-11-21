@@ -1,47 +1,44 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Chart from "react-google-charts";
-import axios from "axios";
 
-class PieChart extends Component {
-  state = {
-    data: [],
-    loading: false,
+export default function PieChart() {
+  const [chart, setChart] = useState([]);
+
+  const getChart = () => {
+    fetch("http://localhost:8080/apparels")
+      .then((response) => response.json())
+      .then((data) => {
+        setChart(data);
+      });
   };
 
-  getAll = async () => {
-    this.setState({ loading: true });
-    const res = await axios.get("http://localhost:8080/apparels");
+  useEffect(() => {
+    getChart();
+  }, []);
 
-    this.setState({ data: res.data[0], loading: false });
+  const mapped = chart.map((d) => [d.name, d.price]);
+  const data = [["Task", "Hours per Day"], ...mapped];
 
-    console.log();
-  };
+  console.log(data);
 
-  async componentDidMount() {
-    this.getAll();
-  }
+  return (
+    <div>
+      <Chart
+        width={"500px"}
+        height={"300px"}
+        chartType="PieChart"
+        loader={<div>Loading Chart</div>}
+        data={data}
+        options={{
+          title: "Data in Percentage",
+        }}
+      />
 
-  render() {
-    return (
-      <div>
-        <Chart
-          width={"500px"}
-          height={"300px"}
-          chartType="PieChart"
-          loader={<div>Loading Chart</div>}
-          data={[
-            ["", ""],
-            ["Price", this.state.data.price],
-            ["Price", this.state.data.price],
-            ["Price", this.state.data.price],
-          ]}
-          options={{
-            title: "Data in Percentage",
-          }}
-        />
-      </div>
-    );
-  }
+      <ul>
+        {chart.map((data, index) => {
+          return <li key={index}>price: {data.price}</li>;
+        })}
+      </ul>
+    </div>
+  );
 }
-
-export default PieChart;
