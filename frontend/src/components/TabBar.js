@@ -24,13 +24,13 @@ function TabBar() {
           onChange={handleTabChange}
           centered
         >
-          <Tab label="Home" />
           <Tab label="Apparel" />
           <Tab label="Maker" />
+          <Tab label="PieChart" />
         </Tabs>
       </AppBar>
-      {tabIndex === 0 && <MakerTable></MakerTable>}
-      {tabIndex === 1 && <ApparelTable></ApparelTable>}
+      {tabIndex === 0 && <ApparelTable></ApparelTable>}
+      {tabIndex === 1 && <MakerTable></MakerTable>}
       {tabIndex === 2 && <PieChart></PieChart>}
     </div>
   );

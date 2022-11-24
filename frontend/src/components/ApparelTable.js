@@ -5,6 +5,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import { Button } from "@mui/material";
 import AddApparel from "./AddApparel";
+import EditApparel from "./EditApparel";
 
 export default function ApparelTable() {
   const [apparels, setApparels] = useState([]);
@@ -14,6 +15,21 @@ export default function ApparelTable() {
     { field: "type", sortable: true, filter: true },
     { field: "price", sortable: true, filter: true },
     { field: "maker.name", sortable: true, filter: true },
+    { callRenderer: (params) => (
+      <EditApparel data={params.data} updateApparel={updateApparel} />
+    )},
+    {
+      callRenderer: (params) => (
+        <Button
+        color="error"
+        variant="contained"
+        onClick={() => deleteApparel(params.data)}
+        >
+          {" "}
+          Delete{" "}
+        </Button>
+      ),
+    },
   ]);
 
   useEffect(() => {
@@ -42,6 +58,38 @@ export default function ApparelTable() {
         }
       })
       .catch((err) => console.log(err));
+  };
+
+  const updateApparel = (apparel, url) => {
+    fetch(url, {
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(apparel),
+    })
+      .then((response) => {
+        if (response.ok) {
+          getApparels();
+        } else {
+          alert("Something went wrong");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteApparel = (data) => {
+    if (window.confirm("do you want to delete?")) {
+      fetch(data._links.apparel.href, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (response.ok) {
+            getApparels();
+          } else {
+            alert("something went wrong");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   console.log(apparels);

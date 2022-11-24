@@ -1,7 +1,7 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
 import * as React from "react";
 
-export default function AddApparel(props) {
+export default function EditApparel(props) {
     const [open, setOpen] = React.useState(false);
     const [apparel, setApparel] = React.useState({
         name: "",
@@ -12,6 +12,13 @@ export default function AddApparel(props) {
 
     const handleClickOpen = () => {
         setOpen(true);
+        console.log(props.data);
+        setApparel({
+            name: props.data.name,
+            type: props.data.type,
+            price: props.data.price,
+            maker: props.data.maker,
+        });
     };
 
     const handleClose = () => {
@@ -19,16 +26,15 @@ export default function AddApparel(props) {
     };
 
     const handleSave = () => {
-        props.addApparel(apparel);
+        props.updateCar(apparel, props.data._links.apparel.href);
         setOpen(false);
-        console.log(apparel);
     };
 
-    return(
+    return (
         <div>
-            <Button size="small" variant="outlined" onClick={handleClickOpen}>Add new apparel</Button>
+            <Button size="small" variant="outlined" onClick={handleClickOpen}>Edit</Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>New Apparel</DialogTitle>
+                <DialogTitle> Edit Apparel</DialogTitle>
                 <DialogContent>
                     <DialogContentText></DialogContentText>
                     <TextField
@@ -39,8 +45,8 @@ export default function AddApparel(props) {
                         onChange={(e) => setApparel({ ...apparel, name: e.target.value })}
                         fullWidth
                         variant="standard"
-                    />
-                    <TextField
+                        />
+                        <TextField
                         autoFocus
                         margin="dense"
                         label="Type"
@@ -48,8 +54,8 @@ export default function AddApparel(props) {
                         onChange={(e) => setApparel({ ...apparel, type: e.target.value })}
                         fullWidth
                         variant="standard"
-                    />
-                    <TextField
+                        />
+                        <TextField
                         autoFocus
                         margin="dense"
                         label="Price"
@@ -57,8 +63,8 @@ export default function AddApparel(props) {
                         onChange={(e) => setApparel({ ...apparel, price: e.target.value })}
                         fullWidth
                         variant="standard"
-                    />
-                    <TextField
+                        />
+                        <TextField
                         autoFocus
                         margin="dense"
                         label="Maker"
@@ -66,13 +72,9 @@ export default function AddApparel(props) {
                         onChange={(e) => setApparel({ ...apparel, maker: e.target.value })}
                         fullWidth
                         variant="standard"
-                    />
+                        />
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleSave}>Save</Button>
-                </DialogActions>
             </Dialog>
         </div>
-    );
+    )
 }
