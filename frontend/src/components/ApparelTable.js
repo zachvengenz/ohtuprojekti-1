@@ -15,11 +15,11 @@ export default function ApparelTable() {
     { field: "type", sortable: true, filter: true },
     { field: "price", sortable: true, filter: true },
     { field: "maker.name", sortable: true, filter: true },
-    { callRenderer: (params) => (
+    { cellRenderer: (params) => (
       <EditApparel data={params.data} updateApparel={updateApparel} />
     )},
     {
-      callRenderer: (params) => (
+      cellRenderer: (params) => (
         <Button
         color="error"
         variant="contained"
@@ -40,6 +40,7 @@ export default function ApparelTable() {
     fetch("http://localhost:8080/apparels")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setApparels(data);
       });
   };
@@ -76,9 +77,9 @@ export default function ApparelTable() {
       .catch((err) => console.log(err));
   };
 
-  const deleteApparel = (data) => {
+  const deleteApparel = () => {
     if (window.confirm("do you want to delete?")) {
-      fetch(data._links.apparel.href, {
+      fetch("http://localhost:8080/apparels/", {
         method: "DELETE",
       })
         .then((response) => {

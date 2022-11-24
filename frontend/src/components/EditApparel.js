@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
 import * as React from "react";
 
 export default function EditApparel(props) {
@@ -26,7 +26,7 @@ export default function EditApparel(props) {
     };
 
     const handleSave = () => {
-        props.updateCar(apparel, props.data._links.apparel.href);
+        props.updateApparel(apparel);
         setOpen(false);
     };
 
@@ -74,6 +74,10 @@ export default function EditApparel(props) {
                         variant="standard"
                         />
                 </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleSave}>Save</Button>
+                </DialogActions>
             </Dialog>
         </div>
     )
