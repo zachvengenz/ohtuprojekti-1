@@ -4,6 +4,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import { Button } from "@mui/material";
+import AddApparel from "./AddApparel";
 
 export default function ApparelTable() {
   const [apparels, setApparels] = useState([]);
@@ -27,8 +28,26 @@ export default function ApparelTable() {
       });
   };
 
+  const addApparel = (apparel) => {
+    fetch("http://localhost:8080/apparels", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(apparel),
+    })
+      .then((response) => {
+        if (response.ok) {
+          getApparels();
+        } else {
+          alert("Something went wrong");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   console.log(apparels);
   return (
+    <>
+    <AddApparel addApparel={addApparel} />
     <div
       className="ag-theme-material"
       style={{ width: "90%", height: 600, margin: "auto" }}
@@ -40,5 +59,6 @@ export default function ApparelTable() {
         paginationPageSize={10}
       ></AgGridReact>
     </div>
+    </>
   );
 }
