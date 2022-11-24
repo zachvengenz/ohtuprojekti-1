@@ -1,3 +1,9 @@
+CREATE TABLE Maker (
+	MakerId int NOT NULL AUTO_INCREMENT,
+	MakerName varchar(255) NOT NULL,
+PRIMARY KEY (MakerId)
+);
+
 CREATE TABLE Apparel (
 	ApparelId int NOT NULL AUTO_INCREMENT,
 	ApparelName varchar(255) NOT NULL,
@@ -6,12 +12,6 @@ CREATE TABLE Apparel (
 	MakerId int,
 PRIMARY KEY (ApparelId),
 FOREIGN KEY (MakerId) REFERENCES Maker(MakerId)
-);
-
-CREATE TABLE Maker (
-	MakerId int NOT NULL AUTO_INCREMENT,
-	MakerName varchar(255) NOT NULL,
-PRIMARY KEY (MakerId)
 );
 
 -- test data injection
