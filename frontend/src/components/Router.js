@@ -9,8 +9,7 @@ function Router() {
   return (
     <div
       style={{
-        margin: "auto",
-        width: "50%",
+        width: "100%",
         background: "pink",
         textAlign: "center",
       }}
