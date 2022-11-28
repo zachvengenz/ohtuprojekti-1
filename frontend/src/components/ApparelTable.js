@@ -15,15 +15,17 @@ export default function ApparelTable() {
     { field: "type", sortable: true, filter: true },
     { field: "price", sortable: true, filter: true },
     { field: "maker.name", sortable: true, filter: true },
-    { cellRenderer: (params) => (
-      <EditApparel data={params.data} updateApparel={updateApparel} />
-    )},
+    {
+      cellRenderer: (params) => (
+        <EditApparel data={params.data} updateApparel={updateApparel} />
+      ),
+    },
     {
       cellRenderer: (params) => (
         <Button
-        color="error"
-        variant="contained"
-        onClick={() => deleteApparel(params.data)}
+          color="error"
+          variant="contained"
+          onClick={() => deleteApparel(params.data)}
         >
           {" "}
           Delete{" "}
@@ -37,16 +39,16 @@ export default function ApparelTable() {
   }, []);
 
   const getApparels = () => {
-    fetch("http://localhost:8080/apparels")
+    fetch("http://localhost:8080/api/apparels")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        setApparels(data);
+        console.log(data);
+        setApparels(data._embedded.apparels);
       });
   };
 
   const addApparel = (apparel) => {
-    fetch("http://localhost:8080/apparels", {
+    fetch("http://localhost:8080/api/apparels", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(apparel),
@@ -77,9 +79,9 @@ export default function ApparelTable() {
       .catch((err) => console.log(err));
   };
 
-  const deleteApparel = () => {
+  const deleteApparel = (data) => {
     if (window.confirm("do you want to delete?")) {
-      fetch("http://localhost:8080/apparels/", {
+      fetch(data._links.apparel.href, {
         method: "DELETE",
       })
         .then((response) => {
@@ -96,18 +98,18 @@ export default function ApparelTable() {
   console.log(apparels);
   return (
     <>
-    <AddApparel addApparel={addApparel} />
-    <div
-      className="ag-theme-material"
-      style={{ width: "90%", height: 600, margin: "auto" }}
-    >
-      <AgGridReact
-        rowData={apparels}
-        columnDefs={columnDefs}
-        pagination={true}
-        paginationPageSize={10}
-      ></AgGridReact>
-    </div>
+      <AddApparel addApparel={addApparel} />
+      <div
+        className="ag-theme-material"
+        style={{ width: "90%", height: 600, margin: "auto" }}
+      >
+        <AgGridReact
+          rowData={apparels}
+          columnDefs={columnDefs}
+          pagination={true}
+          paginationPageSize={10}
+        ></AgGridReact>
+      </div>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-import Router from "./components/Router";
 import TabBar from "./components/TabBar";
 
 function App() {
