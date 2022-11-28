@@ -64,8 +64,10 @@
 		</div>
 	</div>
 
-	<script>		
-		$('#deleteButton').on('click', function (e) {
+	<script>
+
+		
+		$('.table #deleteButton').on('click', function (e) {
     e.preventDefault();
     var href =$(this).attr('href');
     $('#myModal #delRef').attr('href',href);
