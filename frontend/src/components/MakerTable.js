@@ -4,7 +4,9 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 
-export default function ApparelTable() {
+import AddMaker from "./AddMaker";
+
+export default function MakerTable() {
   const [makers, setMakers] = useState([]);
 
   const [columnDefs] = useState([
@@ -25,6 +27,23 @@ export default function ApparelTable() {
         setMakers(data);
       });
   };
+
+  const addMaker = (maker) => {
+    fetch("http://localhost:8080/makers", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(maker),
+    })
+      .then((response) => {
+        if (response.ok) {
+          getMakers();
+        } else {
+          alert("Something went wrong!");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
 /*
   useEffect(() => {
     fetch("http://localhost:8080/makers")
@@ -49,6 +68,7 @@ export default function ApparelTable() {
 
   return (
     <>
+    <AddMaker addMaker={addMaker} />
       <div
         className="ag-theme-material"
         style={{ width: "90%", height: 600, margin: "auto" }}
