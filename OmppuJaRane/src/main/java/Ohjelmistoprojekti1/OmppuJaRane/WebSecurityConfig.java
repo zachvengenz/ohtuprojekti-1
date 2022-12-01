@@ -24,7 +24,6 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-    	.antMatchers("/", "/adduser/**").anonymous()
     	.antMatchers("/signup/**", "/saveuser").permitAll()
     	.antMatchers("/edittopic/**", ", /deletetopic/**").hasAuthority("ADMIN")
     	  .antMatchers("/h2-console/**").permitAll()
@@ -36,7 +35,7 @@ public class WebSecurityConfig {
         	  .headers().frameOptions().sameOrigin()
         	  .and()
       .formLogin()
-          .defaultSuccessUrl("/topiclist", true)
+          .defaultSuccessUrl("/apparel_list", true)
           .permitAll()
           .and()
       .logout()
