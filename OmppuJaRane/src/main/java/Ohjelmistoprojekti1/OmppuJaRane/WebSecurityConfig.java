@@ -25,8 +25,6 @@ public class WebSecurityConfig {
         http
         .authorizeRequests()
     	.antMatchers("/signup/**", "/saveuser").permitAll()
-    	.antMatchers("/edittopic/**", ", /deletetopic/**").hasAuthority("ADMIN")
-    	  .antMatchers("/h2-console/**").permitAll()
         	.antMatchers("/css/**").permitAll() // Enable css when logged out
         	.anyRequest().authenticated()
         	.and()
