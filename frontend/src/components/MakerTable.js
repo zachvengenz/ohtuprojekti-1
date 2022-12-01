@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
+import { Button } from "@mui/material";
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -10,7 +11,19 @@ export default function MakerTable() {
   const [makers, setMakers] = useState([]);
 
   const [columnDefs] = useState([
-    { field: "name", sortable: true, filter: true }
+    { field: "name", sortable: true, filter: true },
+    {
+      cellRenderer: (params) => (
+        <Button
+          color="error"
+          variant="contained"
+          onClick={() => deleteMaker(params.data)}
+        >
+          {" "}
+          Delete{" "}
+        </Button>
+      ),
+    },
     
   ]);
 
@@ -42,6 +55,22 @@ export default function MakerTable() {
         }
       })
       .catch((err) => console.log(err));
+  };
+
+  const deleteMaker = (id) => {
+    if (window.confirm("do you want to delete?")) {
+      fetch("http://localhost:8080/makers/" + id, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (response.ok) {
+            getMakers();
+          } else {
+            alert("something went wong!");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
 /*
