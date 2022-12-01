@@ -66,6 +66,14 @@
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
 		</dependency>
+				<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
 		<!-- <dependency> heroku mariadb deployment setup -->
 		<!--	 <groupId>org.mariadb.jdbc</groupId>
 			 <artifactId>mariadb-java-client</artifactId>
