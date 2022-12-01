@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />    
 </head>
-<body>
-	<table class="table table-striped">
+<body style="margin: 20px">
+	<table class="table table-striped table-dark table-bordered table-hover table-sm">
 	
 
 		<tr>
@@ -25,11 +25,11 @@
     		<td th:text="${apparel.type}"></td>
     		<td th:text="${#numbers.formatDecimal(apparel.price,1,2)}"></td>
     		<td th:text="${apparel.maker.name}"></td>
-    		<td><a class="btn btn-danger" th:href="@{/delete_apparel/{id}(id=${apparel.id})}">🔥</a></td>
-    		<td><a class="btn btn-success" th:href="@{/edit_apparel/{id}(id=${apparel.id})}">✍</a></td>
+    		<td><a class="btn btn-outline-danger" th:href="@{/delete_apparel/{id}(id=${apparel.id})}">🔥</a></td>
+    		<td><a class="btn btn-outline-success" th:href="@{/edit_apparel/{id}(id=${apparel.id})}">✍</a></td>
     	</tr>
      </table>
-     <a class="btn btn-success" href="/add_apparel">Lisää vaate</a>
-          <a class="btn btn-success" href="/maker_list">Valmistajalista</a>
+     <a class="btn btn-info" href="/add_apparel">Lisää vaate</a>
+          <a class="btn btn-info" href="/maker_list">Valmistajalista</a>
 </body>
 </html>

@@ -17,9 +17,9 @@
 	crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body style="margin: 20px">
 
-	<table class="table table-striped">
+	<table class="table table-striped table-dark table-bordered table-hover table-sm">
 		<tr>
 			<th>ID</th>
 			<th>Nimi</th>
@@ -32,12 +32,12 @@
 		<tr th:each="maker : ${makers}">
 			<td th:text="${maker.id}"></td>
 			<td th:text="${maker.name}"></td>
-			<td><a class="btn btn-danger" id="deleteButton"
+			<td><a class="btn btn-outline-danger" id="deleteButton"
 				th:href="@{/delete_maker/{id}(id=${maker.id})}"
 				data-bs-toggle="modal" data-bs-target="#myModal">🔥</a></td>
-			<td><a class="btn btn-success"
+			<td><a class="btn btn-outline-success"
 				th:href="@{/edit_maker/{id}(id=${maker.id})}">✍</a></td>
-			<td><a class="btn btn-success"
+			<td><a class="btn btn-outline-info"
 				th:href="@{/apparelmaker/{id} (id=${maker.id})}">Merkin vaatteet</a></td>
 
 		</tr>
@@ -75,8 +75,8 @@
 });
 	</script>
 
-
-<a class="btn btn-success" href="/apparel_list">Palaa takaisin</a>
+<a class="btn btn-info" style="color: white" href="/add_maker">Lisää valmistaja</a>
+<a class="btn btn-info" style="color: white" href="/apparel_list">Palaa takaisin</a>
 </body>
 
 
