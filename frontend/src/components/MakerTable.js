@@ -12,15 +12,16 @@ export default function MakerTable() {
 
   const [columnDefs] = useState([
     { field: "name", sortable: true, filter: true },
-    {
+    { field: "id",
+      headerName: '',
       cellRenderer: (params) => (
         <Button
           color="error"
           variant="contained"
-          onClick={() => deleteMaker(params.data)}
+          onClick={() => deleteMaker(params.value)}
         >
-          {" "}
-          Delete{" "}
+          
+          Delete
         </Button>
       ),
     },
