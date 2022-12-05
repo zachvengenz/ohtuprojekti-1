@@ -89,9 +89,10 @@ public class ApparelController {
         return "redirect:/apparel_list";
     }
     
-    @DeleteMapping("/delete_apparel/{id}")
-    void deleteApparel(@PathVariable("id") Long apparelId) {
+    @GetMapping("/delete_apparel/{id}")
+    public String deleteApparel(@PathVariable("id") Long apparelId) {
     	arepository.deleteById(apparelId);
+    	return "redirect:/apparel_list";
     }
     
    
