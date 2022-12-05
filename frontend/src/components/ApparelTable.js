@@ -39,11 +39,10 @@ export default function ApparelTable() {
   }, []);
 
   const getApparels = () => {
-    fetch("http://localhost:8080/apparels")
+    fetch("http://localhost:8080/api/apparels")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setApparels(data);
+        setApparels(data._embedded.apparels);
       });
   };
 
