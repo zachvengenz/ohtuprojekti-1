@@ -34,7 +34,7 @@ export default function EditApparel(props) {
   };
 
   const handleSave = () => {
-    props.updateApparel(apparel);
+    props.updateApparel(apparel, props.data._links.apparel.href);
     setOpen(false);
   };
 
