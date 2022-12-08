@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>Valmistajalista</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,8 +22,8 @@
 		<tr>
 			<th>ID</th>
 			<th>Nimi</th>
-			<th>Poista</th>
-			<th>Muokkaa</th>
+			<th sec:authorize="hasAuthority('ADMIN')">Poista</th>
+			<th sec:authorize="hasAuthority('ADMIN')">Muokkaa</th>
 			<th>Merkin vaatteet</th>
 
 
@@ -35,9 +34,9 @@
 			<td><a class="btn btn-outline-danger" id="deleteButton"
 				th:href="@{/delete_maker/{id}(id=${maker.id})}"
 				data-bs-toggle="modal" data-bs-target="#myModal">🔥</a></td>
-			<td><a class="btn btn-outline-success"
+			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-outline-success"
 				th:href="@{/edit_maker/{id}(id=${maker.id})}">✍</a></td>
-			<td><a class="btn btn-outline-info"
+			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-outline-info"
 				th:href="@{/apparelmaker/{id} (id=${maker.id})}">Merkin vaatteet</a></td>
 
 		</tr>

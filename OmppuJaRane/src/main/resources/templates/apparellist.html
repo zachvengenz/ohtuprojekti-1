@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Vaatelista</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,8 +15,8 @@
 		    <th>Tyyppi</th>
 		    <th>Hinta</th>
 		    <th>Valmistaja</th>
-		    <th>Poista</th>
-		    <th>Muokkaa</th>
+		    <th sec:authorize="hasAuthority('ADMIN')">Poista</th>
+		    <th sec:authorize="hasAuthority('ADMIN')">Muokkaa</th>
 		    
 		</tr>
     	<tr th:each = "apparel : ${apparels}">
@@ -25,8 +25,8 @@
     		<td th:text="${apparel.type}"></td>
     		<td th:text="${#numbers.formatDecimal(apparel.price,1,2)}"></td>
     		<td th:text="${apparel.maker.name}"></td>
-    		<td><a class="btn btn-outline-danger" th:href="@{/delete_apparel/{id}(id=${apparel.id})}">🔥</a></td>
-    		<td><a class="btn btn-outline-success" th:href="@{/edit_apparel/{id}(id=${apparel.id})}">✍</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-outline-danger" th:href="@{/delete_apparel/{id}(id=${apparel.id})}">🔥</a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-outline-success" th:href="@{/edit_apparel/{id}(id=${apparel.id})}">✍</a></td>
     	</tr>
      </table>
      <a class="btn btn-info" href="/add_apparel">Lisää vaate</a>
