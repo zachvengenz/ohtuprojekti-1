@@ -24,7 +24,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-    	.antMatchers("/**", "/saveuser").permitAll()
+    	.antMatchers("/", "/saveuser").permitAll()
         	.antMatchers("/css/**").permitAll() // Enable css when logged out
         	.anyRequest().authenticated()
         	.and()

@@ -1,20 +1,17 @@
 package Ohjelmistoprojekti1.OmppuJaRane.web;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Apparel;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.ApparelRepository;
@@ -42,6 +39,7 @@ public class ApparelController {
     }
     
     @GetMapping(value="/apparelmaker/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String apparelMaker(@PathVariable("id") Long id, Model model) {	
     	model.addAttribute("maker", mrepository.findByMakerId(id));
        	model.addAttribute("apparel", arepository.findAll());
@@ -50,6 +48,7 @@ public class ApparelController {
     }
     
     @RequestMapping(value = "/add_apparel")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addApparel(Model model){
     	model.addAttribute("apparel", new Apparel());
     	model.addAttribute("makers", mrepository.findAll());
@@ -57,6 +56,7 @@ public class ApparelController {
     }     
     
     @RequestMapping(value = "/save_apparel", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String save(@Valid Apparel apparel, BindingResult result, Model model){
     	if (result.hasErrors()) {
     		model.addAttribute("makers", mrepository.findAll());
@@ -67,6 +67,7 @@ public class ApparelController {
     }    
 
     @GetMapping("/edit_apparel/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
 	public String editApparel(@PathVariable("id") Long apparelId, Model model) {
     	Apparel apparel = arepository.findById(apparelId)
     	.orElseThrow(() -> new IllegalArgumentException("Invalid id" + apparelId));
@@ -79,6 +80,7 @@ public class ApparelController {
 } 
     
     @PostMapping("/update_apparel/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String updateApparel(@PathVariable("id") Long apparelId, Model model, Apparel apparel, BindingResult result) {
         if (result.hasErrors()) {
             model.addAttribute("makers", mrepository.findAll());
@@ -90,6 +92,7 @@ public class ApparelController {
     }
     
     @GetMapping("/delete_apparel/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteApparel(@PathVariable("id") Long apparelId) {
     	arepository.deleteById(apparelId);
     	return "redirect:/apparel_list";

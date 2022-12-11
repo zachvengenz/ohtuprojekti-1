@@ -11,6 +11,8 @@ import Ohjelmistoprojekti1.OmppuJaRane.domain.Apparel;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.ApparelRepository;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.Maker;
 import Ohjelmistoprojekti1.OmppuJaRane.domain.MakerRepository;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.User;
+import Ohjelmistoprojekti1.OmppuJaRane.domain.UserRepository;
 
 @SpringBootApplication
 public class OmppuJaRaneApplication {
@@ -20,12 +22,16 @@ public class OmppuJaRaneApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(ApparelRepository repository, MakerRepository vrepository)
+	public CommandLineRunner demo(ApparelRepository repository, MakerRepository vrepository, UserRepository urepository)
 	
 		{return (args) -> {
 			final Logger logger = LoggerFactory.getLogger(CommandLineRunner.class);
 			
-			
+			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+
+			urepository.save(user1);
+			urepository.save(user2);
 			
 			Maker v1 = new Maker("Leikki");
 			Maker v2 = new Maker("M&M");
